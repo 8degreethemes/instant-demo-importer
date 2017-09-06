@@ -136,7 +136,12 @@ if(!class_exists('Instant_Demo_Importer')) :
 
 			/** Set Widgets **/
 			$this->save_widgets($path.'/widgets.wie');
-
+			
+			/** Configure Menus **/
+			if( $mmenu != '' ) {
+				$this->set_menus($mmenu);
+			}
+			
 			/** Set Featured Home Page **/
 			if($homepage) {
 				$this->set_home_page($homepage);
