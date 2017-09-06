@@ -3,9 +3,9 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 /*
 Plugin Name: Instant Demo Importer
 Plugin URI: 
-Description: Demo data import tool for AccessPress Themes.
-Author: Access Keys
-Author URI:  http://accesspressthemes.com/
+Description: Demo data import tool for 8Degree Themes.
+Author: 8degreethemes
+Author URI:  http://8degreethemes.com/
 Version: 1.0.0
 Text Domain: instant-demo-importer
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
