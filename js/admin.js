@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
 
 		$import_true = confirm(IDMObject.demo_confirm);
 		if($import_true == false) return;
-
+		var site_url = $('#site_url').val();
 		var el = $(this);
 		var ajaxurl = IDMObject.ajaxurl;
 		var folder = el.attr('data-folder');
