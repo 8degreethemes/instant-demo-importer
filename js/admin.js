@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
                 }
                 el.removeClass('installing');
 				el.html(IDMObject.demo_installed);
-		    el.attr('disabled');
+		    el.attr('disabled','disabled');
                 el.parents('.all-demo-wrapper').prepend("<div class='warning-msg'>"+response+"</div>");
             }
         });
