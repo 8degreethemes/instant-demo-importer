@@ -8,6 +8,9 @@ jQuery(document).ready(function ($) {
 		var site_url = $('#site_url').val();
 		var el = $(this);
 		var ajaxurl = IDMObject.ajaxurl;
+		if(site_url==undefined){
+		    var site_url = ajaxurl.replace("wp-admin/admin-ajax.php","");
+		}
 		var folder = el.attr('data-folder');
 		var menu = el.attr('data-menu');
 		var homepage = el.attr('data-homepage');
