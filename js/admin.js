@@ -24,9 +24,13 @@ jQuery(document).ready(function ($) {
             'menu': menu,
             'homepage': homepage,
             }),
-            success: function(response){ alert(response);
+            success: function(response){ 
+                if(confirm("\t Demo has been Imported. \n Press 'Ok' to Visit Homepage \n or \n Cancel to stay here. \t")){
+                    document.location = site_url;
+                }
                 el.removeClass('installing');
 				el.html(IDMObject.demo_installed);
+                el.parents('.all-demo-wrapper').prepend("<div class='warning-msg'>"+response+"</div>");
             }
         });
 	});
