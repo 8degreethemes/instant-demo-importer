@@ -125,7 +125,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 			$path = $demo_dir_path.$folder;
 			
 			/** Site Content Import **/
-			$this->fetch_attachments = true;
+			$this->fetch_attachments = false;
 			$this->import($path.'/content.xml');
 
 			/** Set Theme Options **/
