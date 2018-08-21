@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 Plugin Name: Instant Demo Importer
 Plugin URI: 
 Description: Demo data import tool for 8Degree Themes.
-Author: 8degreethemes
+Author: 8Degree Themes
 Author URI:  http://8degreethemes.com/
 Version: 1.0.0
 Text Domain: instant-demo-importer
@@ -80,6 +80,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 				'ajaxurl'		=> esc_url( admin_url( 'admin-ajax.php' ) ),
 				'demo_installing' => __('Installing Demo', IDM_TD),
 				'demo_installed' => __('Demo Installed', IDM_TD),
+				'demo_import_success' => __('Demo has been successfully installed', IDM_TD),
 				'demo_confirm' => __('Are you sure to import demo content ?', IDM_TD),
 			) );
 		}
@@ -119,7 +120,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 		public function demo_import_callback() {
 
 			$folder = isset($_POST['folder']) ? sanitize_file_name($_POST['folder']) : '';
-			$mmenu = isset($_POST['menu']) ? esc_html($_POST['menu']) : '';
+			$mmenu = isset($_POST['menu']) ? $_POST['menu'] : '';
 			$homepage = isset($_POST['homepage']) ? esc_html($_POST['homepage']) : '';
             $demo_dir_path = $this->demo_dir;
 			$path = $demo_dir_path.$folder;
@@ -136,12 +137,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 
 			/** Set Widgets **/
 			$this->save_widgets($path.'/widgets.wie');
-			
-			/** Configure Menus **/
-			if( $mmenu != '' ) {
-				$this->set_menus($mmenu);
-			}
-			
+
 			/** Set Featured Home Page **/
 			if($homepage) {
 				$this->set_home_page($homepage);
@@ -406,18 +402,17 @@ if(!class_exists('Instant_Demo_Importer')) :
 
 		/** Function to set the Menus **/
 		public function set_menus($menu) {
-
 			if( $menu != '' ) {
 				global $wpdb;
 				$table_db_name = $wpdb->prefix . "terms";
 				$menu_ids = array();
-				$save_menu = '';
+				$save_menu = array();
 
 				$menu = rtrim($menu, '|');
 				$menu_arr = explode('|', $menu);
 
 				foreach($menu_arr as $menu_single_ar) {
-					$mens = explode('&gt;', $menu_single_ar);
+					$mens = explode('>', $menu_single_ar);
 
 					$rows = $wpdb->get_results("SELECT * FROM $table_db_name where name='".$mens[0]."'",ARRAY_A);
 
