@@ -88,7 +88,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 		public function demo_importer() {
 			$demos = $this->demos;
 			?>
-				<h3 class="choose-demo-title"><?php echo esc_html__("Choose any one demo from the avaialable following demos !", IDM_TD ); ?></h3>
+				<h3 class="choose-demo-title"><?php echo esc_html__("Choose any one demo from the available following demos !", IDM_TD ); ?></h3>
                 <?php if(!empty($demos)) : ?>
                     <div class="all-demo-wrapper">
     				<?php foreach($demos as $demo) : $men = ''; ?>
